@@ -4,11 +4,11 @@ var canvas = paper.getContext('2d');
 var pepito = paper.addEventListener('click', game);
 //variables for tic tac toe's squares
 var circle = {
-    url: 'https://imgur.com/7zY497C',
+    url: './images/o.png',
     spaces: new Array()
 }
 var equis = {
-    url: 'https://imgur.com/MxeOXeH',
+    url: './images/x.png',
     spaces: new Array()
 }
 //extra variables
