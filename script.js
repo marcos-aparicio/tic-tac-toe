@@ -29,7 +29,9 @@ draw(canvas, 'black', 1, 402, 0, 402, 602);
 draw(canvas, 'black', 1, 0, 201, 602, 201);
 draw(canvas, 'black', 1, 0, 402, 602, 402);
 
-
+function nothing(xd){
+    canvas.drawImage(xd.image,800,800)
+}
 function game(a) {
     //getting coordinates from canvas
     x = a.offsetX;
