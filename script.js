@@ -1,3 +1,5 @@
+var button = document.getElementById('button');
+button.addEventListener('click',reset);
 //variables to get canvas
 var paper = document.getElementById('canvas');
 var canvas = paper.getContext('2d');
@@ -25,17 +27,8 @@ var free = Array(9).fill(true) //Array for each square's availability
 var tie = 0; //if tie is 9 it means a current tie
 
 //drawing the Tic Tac Toe Lines
-draw(canvas, 'black', 1, 201, 0, 201, 602);
-draw(canvas, 'black', 1, 402, 0, 402, 602);
-draw(canvas, 'black', 1, 0, 201, 602, 201);
-draw(canvas, 'black', 1, 0, 402, 602, 402);
-if(tie == 9){
-    p.innerHTML = 'tie';
-}
+drawBoard();
 
-function nothing(xd){
-    canvas.drawImage(xd.image,800,800)
-}
 function game(a) {
     //getting coordinates from canvas
     x = a.offsetX;
@@ -77,17 +70,17 @@ function drawMichi(x, y, square) {
         equis.spaces[square] = true;
         turno = 0;
         console.log(equis.spaces);
-        winningConditions(equis,'X')
+        winningConditions(equis, 'X')
     }
     else if (!turno & free[square]) {
         canvas.drawImage(circle.image, x, y)
         circle.spaces[square] = true;
         turno = 1;
         console.log(circle.spaces);
-        winningConditions(circle,'Circle');
+        winningConditions(circle, 'Circle');
     }
     else if (tie == 9 & !victory) {
-        alert("That's a tie!")
+        alert("That's a tie!, Restart the game to choose a slot")
     }
     else if (victory) {
         alert('Someone has already won');
@@ -99,10 +92,12 @@ function drawMichi(x, y, square) {
     if (tie < 9 & !victory) {
         tie += 1;
     }
-
+    if (tie == 9) {
+        p.innerHTML = 'tie';
+    }
 }
 //this function works with the previous ones, detects if someone won in order to finish the game
-function winningConditions(player,name) {
+function winningConditions(player, name) {
     if (player.spaces[0] & player.spaces[1] & player.spaces[2] ||
         player.spaces[0] & player.spaces[3] & player.spaces[6] ||
         player.spaces[0] & player.spaces[4] & player.spaces[8] ||
@@ -110,7 +105,7 @@ function winningConditions(player,name) {
         player.spaces[2] & player.spaces[4] & player.spaces[6] ||
         player.spaces[2] & player.spaces[5] & player.spaces[8] ||
         player.spaces[3] & player.spaces[4] & player.spaces[5] ||
-        player.spaces[6] & player.spaces[7] & player.spaces [8]) {
+        player.spaces[6] & player.spaces[7] & player.spaces[8]) {
         win(name);
     }
 }
@@ -120,6 +115,28 @@ function win(winner) {
         free[e] = false;
     }
     victory = true;
+}
+function reset(){
+    alert('funciono')
+    tie = 0;
+    victory = false;
+    turno = 0;
+    for(z in free){
+        equis.spaces[z] = NaN;
+        circle.spaces[z] = NaN;
+        free[z] = true;
+        console.log(equis.spaces)
+        console.log(circle.spaces)
+    }
+    canvas.clearRect(0,0,paper.width,paper.height);
+    drawBoard();
+}
+function drawBoard(){
+    draw(canvas, 'black', 1, 201, 0, 201, 602);
+    draw(canvas, 'black', 1, 402, 0, 402, 602);
+    draw(canvas, 'black', 1, 0, 201, 602, 201);
+    draw(canvas, 'black', 1, 0, 402, 602, 402);
+
 }
 function draw(context, color, width, x1, y1, x2, y2) {
     context.beginPath();
