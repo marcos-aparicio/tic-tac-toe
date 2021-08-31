@@ -22,12 +22,16 @@ var y;
 var x;
 var turno = 0; // Initial Turn
 var free = Array(9).fill(true) //Array for each square's availability 
+var tie = 0; //if tie is 9 it means a current tie
 
 //drawing the Tic Tac Toe Lines
 draw(canvas, 'black', 1, 201, 0, 201, 602);
 draw(canvas, 'black', 1, 402, 0, 402, 602);
 draw(canvas, 'black', 1, 0, 201, 602, 201);
 draw(canvas, 'black', 1, 0, 402, 602, 402);
+if(tie == 9){
+    p.innerHTML = 'tie';
+}
 
 function nothing(xd){
     canvas.drawImage(xd.image,800,800)
@@ -82,15 +86,20 @@ function drawMichi(x, y, square) {
         console.log(circle.spaces);
         winningConditions(circle,'Circle');
     }
-    else {
-        if (victory) {
-            alert('Someone has already won')
-        }
-        else {
-            alert('Choose another slot');
-        }
+    else if (tie == 9 & !victory) {
+        alert("That's a tie!")
+    }
+    else if (victory) {
+        alert('Someone has already won');
+    }
+    else if (!free[square]) {
+        alert('Choose another slot');
     }
     free[square] = false;
+    if (tie < 9 & !victory) {
+        tie += 1;
+    }
+
 }
 //this function works with the previous ones, detects if someone won in order to finish the game
 function winningConditions(player,name) {
