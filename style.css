@@ -6,3 +6,8 @@
 html {
     font-size: 62.5%;
 }
+header {
+    height:10vh;
+    background-color: black;
+    margin-bottom: 2rem;
+}
