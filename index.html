@@ -5,21 +5,31 @@
     <title>Tic Tac Toe Game/ el michi pe mano</title>
     <meta charset='utf-8'>
     <meta name='description' content='juega el divertido y super original michifus'>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./style.css">
 </head>
-
 <body>
     <header>
-        <h1>Tic Tac Toe</h1>
-        <p>My first Project</p>
+        <h1>TIC TAC TOE</h1>
+        <p>My first<br>Project</p>
     </header>
     <main>
-        <section class="game">
-            <canvas height='602' width='602' id='canvas'> </canvas>
-        </section>
-        <section class="funcionalities">
-            <input type="button" value="New Game" id='button'>
-            <p id="win"></p>
+        <canvas height='602' width='602' id='canvas'> </canvas>
+        <section class="features">
+        
+            <input type="button" value="New Game" id='button' class="feature newgame">
+        
+            <input type="select" value="Select Initial Turn" class='feature turn'>
+            <div class="funcionalities">
+                <p class="feature turn p1"></p>               
+                <p class='feature p2'>comming soon</p>
+
+            </div>
+            <p id="win" class='feature win'></p>
+                
+           
         </section>
     </main>
     <footer>

@@ -116,8 +116,7 @@ function win(winner) {
     }
     victory = true;
 }
-function reset(){
-    alert('funciono')
+function reset(){   
     tie = 0;
     victory = false;
     turno = 0;

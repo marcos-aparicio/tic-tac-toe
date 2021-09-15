@@ -5,9 +5,59 @@
 }
 html {
     font-size: 62.5%;
+    font-family: 'Lato', sans-serif;
 }
 header {
-    height:10vh;
+    display:flex;
+    justify-content: space-between;
     background-color: black;
-    margin-bottom: 2rem;
+    color:white;
+}
+header h1{
+    font-size:6.8rem;
+    font-weight: 100;
+    padding:1rem;
+}
+header p {
+    font-size:2rem;
+    padding:1rem;
+}
+main{    
+    width:100%;
+    display:flex;
+}
+#canvas{
+    padding:3rem;
+}
+.features{
+    display:flex;
+    margin:auto;
+    flex-direction:column;
+}
+.feature{
+    background-color:black;
+    color:white;
+    border-radius:2.5rem;
+    height:8rem;
+    width:30vw;
+    margin-top:1.5rem;
+    font-size:3.2rem;
+    text-align:center;
+}
+.features input{
+    font-family: 'Lato', sans-serif;
+}
+.funcionalities {
+    display:flex;
+    justify-content: space-between;
+}
+.p1{
+    width:15vw;
+}
+.p2{
+    width:13vw;
+}
+footer {
+    background-color: black;
+    color:white;
 }
