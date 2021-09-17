@@ -1,5 +1,7 @@
 var button = document.getElementById('button');
 button.addEventListener('click',reset);
+var select = document.getElementById('select');
+select.addEventListener('click',selectTurn)
 //variables to get canvas
 var paper = document.getElementById('canvas');
 var canvas = paper.getContext('2d');
@@ -22,14 +24,34 @@ equis.image = new Image();
 equis.image.src = equis.url;
 var y;
 var x;
+var start = false;
 var turno = 0; // Initial Turn
+var turn; //Turn by button 
 var free = Array(9).fill(true) //Array for each square's availability 
 var tie = 0; //if tie is 9 it means a current tie
 
 //drawing the Tic Tac Toe Lines
 drawBoard();
 
+function selectTurn(){
+    if(select.value == 'circle'){
+        turn = 0;
+        if(!start){
+            turno = 0;
+        }
+    }
+    if(select.value == 'cross'){
+        turn = 1
+        if(!start){
+            turno = 1;
+        }
+    }
+    else{
+
+    }
+}
 function game(a) {
+    start = true;
     //getting coordinates from canvas
     x = a.offsetX;
     y = a.offsetY;
@@ -119,7 +141,8 @@ function win(winner) {
 function reset(){   
     tie = 0;
     victory = false;
-    turno = 0;
+    turno = turn;
+    p.innerHTML = 'To restart the game hit the New Game button<br>Hope you enjoy this';
     for(z in free){
         equis.spaces[z] = NaN;
         circle.spaces[z] = NaN;
@@ -129,6 +152,7 @@ function reset(){
     }
     canvas.clearRect(0,0,paper.width,paper.height);
     drawBoard();
+    select.value = 'hidden';
 }
 function drawBoard(){
     draw(canvas, 'black', 1, 201, 0, 201, 602);
